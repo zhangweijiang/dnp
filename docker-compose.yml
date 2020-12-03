@@ -1,0 +1,26 @@
+version: "3"
+services:
+  dnp:
+    image: dnp
+    build:
+      context: .
+      args:
+        PHP_VERSION: php:${PHP_VERSION}-fpm-alpine
+        CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
+        PHP_EXTENSIONS: ${PHP_EXTENSIONS}
+        TZ: "$TZ"
+    container_name: dnp
+    ports:
+      - "${NGINX_HTTP_HOST_PORT}:80"
+      - "${NGINX_HTTPS_HOST_PORT}:443"
+    volumes:
+      - ${SOURCE_DIR}:/www/:rw
+      - ${PHP_LOG_DIR}:/var/log/php
+      - ${DATA_DIR}/composer:/tmp/composer
+      - ${NGINX_LOG_DIR}:/var/log/nginx/:rw
+    cap_add:
+      - SYS_PTRACE
+    restart: always
+    networks:
+      - default
+
