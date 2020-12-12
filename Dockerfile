@@ -38,11 +38,11 @@ ENV COMPOSER_HOME=/tmp/composer
 RUN apk --no-cache add shadow && usermod -u 1000 www-data && groupmod -g 1000 www-data
 
 # 安装swoole_loader扩展
-ARG PHP_EXT_SWOOLE_LOADER
-ADD ${PHP_EXT_SWOOLE_LOADER} /
-RUN chmod a+x /swoole_loader.so && \
-    cp -f /swoole_loader.so /usr/local/lib/php/extensions/no-debug-* && \
-    echo "extension=swoole_loader.so" > /usr/local/etc/php/conf.d/docker-php-ext-swoole_loader.ini
+#ARG PHP_EXT_SWOOLE_LOADER
+#ADD ${PHP_EXT_SWOOLE_LOADER} /
+#RUN chmod a+x /swoole_loader.so && \
+#    cp -f /swoole_loader.so /usr/local/lib/php/extensions/no-debug-* && \
+#    echo "extension=swoole_loader.so" > /usr/local/etc/php/conf.d/docker-php-ext-swoole_loader.ini
 
 # 安装nginx
 RUN mkdir /www

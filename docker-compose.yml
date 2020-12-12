@@ -9,7 +9,7 @@ services:
         CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
         PHP_EXTENSIONS: ${PHP_EXTENSIONS}
         TZ: "$TZ"
-        PHP_EXT_SWOOLE_LOADER: ${PHP_EXT_SWOOLE_LOADER}
+        #PHP_EXT_SWOOLE_LOADER: ${PHP_EXT_SWOOLE_LOADER}
     container_name: dnp
     ports:
       - "${NGINX_HTTP_HOST_PORT}:80"
